@@ -98,7 +98,7 @@ def scrape():
         hemisphere_image_urls.append({'title': title, 'img_url': img_url})
     
     # Store the data in a dictionary
-    mars_data {
+    mars_data = {
         'news_title': news_title,
         'news_p': news_p,
         'featured_image_url': featured_image_url,
