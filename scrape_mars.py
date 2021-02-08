@@ -7,8 +7,8 @@ from bs4 import BeautifulSoup
 def scrape():
 
     # Setup splinter
-    executable_path = {'executable_path': 'C:\webdrivers\chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    executable_path = {"executable_path": "C:\webdrivers\chromedriver.exe"}
+    browser = Browser("chrome", **executable_path, headless=False)
 
     # Website to open in chrome
     url = 'https://mars.nasa.gov/news/'

@@ -21,22 +21,44 @@
     <div class="row">
       <div class="col-md-12">
         <h3>Latest Mars News</h3>
-        <h5>{{planet.title}}</h5>
-        <small>{{planet.news_p}}</small>
+        <h5>{{mars.title}}</h5>
+        <small>{{mars.news_p}}</small>
       </div>
     </div>
 
-    <!-- Featured Mars Image and Mars Facts table -->
+    <!-- Featured Mars Image and Mars Data table -->
     <div class="row">
         <div class="col-md-8">
             <h3>Featured Mars Image</h3>
-            <img src="{{ planet.featured_image_url }}" alt="Mars">
+            <img src="{{ mars.featured_image_url }}" alt="Mars_Featured">
         </div>
         <div class="col-md-4">
             <h5>Mars Facts</h5>
-            <table>{{planet.mars_table}}</table>
+            <table>{{mars.mars_table}}</table>
         </div>
-    </div> 
+    </div>
+
+    <!-- Mars Hemispheres -->
+    <div class="container">
+        <h4 style="text-align:center">Mars Hemishpheres</h4>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ mars.hemisphere_image_urls }}" alt="Valles_Marineris">
+            </div>
+            <div class="col-md-6">
+                <img src="{{ mars.hemisphere_image_urls }}" alt="Cerberus">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ mars.hemisphere_image_urls }}" alt="Schiaparelli">
+            </div>
+            <div class="col-md-6">
+                <img src="{{ mars.hemisphere_image_urls }}" alt="Syrtis_Major">
+            </div>
+        </div>
+    </div>
 
   </div>
 </body>
