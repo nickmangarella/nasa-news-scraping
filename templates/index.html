@@ -34,33 +34,28 @@
         </div>
         <div class="col-md-4">
             <h5>Mars Facts</h5>
-            <table>{{mars.mars_table}}</table>
+            <div>
+            {{mars.mars_table}}
+            </div>
         </div>
     </div>
+    <br>
+    <br>
 
     <!-- Mars Hemispheres -->
-    <div class="container">
-        <h4 style="text-align:center">Mars Hemishpheres</h4>
-        <hr>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{{ mars.hemisphere_image_urls }}" alt="Valles_Marineris">
-            </div>
-            <div class="col-md-6">
-                <img src="{{ mars.hemisphere_image_urls }}" alt="Cerberus">
-            </div>
+    <h4 style="text-align:center">Mars Hemishpheres</h4>
+    <hr>
+    <div class="row">
+      {% for x in mars.hemisphere_image_urls %}
+        <div class="col-md-6">
+          <img src="{{ x.img_url }}" alt="x.title" width="550px" height="550px">
+          <p>{{x.title}}</p>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{{ mars.hemisphere_image_urls }}" alt="Schiaparelli">
-            </div>
-            <div class="col-md-6">
-                <img src="{{ mars.hemisphere_image_urls }}" alt="Syrtis_Major">
-            </div>
-        </div>
+      {% endfor %}
     </div>
 
   </div>
+
 </body>
 
 </html>
