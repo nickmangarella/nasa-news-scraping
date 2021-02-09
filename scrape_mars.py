@@ -3,7 +3,6 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 
-# Function to scrape all the data from mission_to_mars and returned into one dictionary
 def scrape():
 
     # Setup splinter
@@ -25,7 +24,8 @@ def scrape():
         # Scrape the latest news title and paragraph text
         news_title = soup.find_all('div', class_='content_title')[1].text
         news_p = soup.find_all('div', class_='article_teaser_body')[0].text
-    
+
+
     # Website to open in chrome
     url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(url)
@@ -77,7 +77,7 @@ def scrape():
     for x in hemispheres:
     
         # Append each hemisphere link to a list
-        url = 'https://astrogeology.usgs.gov'
+        base_url = 'https://astrogeology.usgs.gov'
         hemisphere_links.append(url + x.find('a')['href'])
     
     # Iterate through each hemisphere link
@@ -92,7 +92,7 @@ def scrape():
 
         # Scrape the hemisphere title and image url
         title = soup.find('h2', class_='title').text
-        img_url = url + soup.find('img', class_='wide-image')['src']
+        img_url = base_url + soup.find('img', class_='wide-image')['src']
                             
         # Append each dictionary with the hemisphere title and image url to a list
         hemisphere_image_urls.append({'title': title, 'img_url': img_url})
