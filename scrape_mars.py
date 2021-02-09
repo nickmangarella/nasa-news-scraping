@@ -3,11 +3,14 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 
+def init_browser():
+    
+    executable_path = {"executable_path": "C:\webdrivers\chromedriver.exe"}
+    return Browser("chrome", **executable_path, headless=False)
+
 def scrape():
 
-    # Setup splinter
-    executable_path = {"executable_path": "C:\webdrivers\chromedriver.exe"}
-    browser = Browser("chrome", **executable_path, headless=False)
+    browser = init_browser()
 
     # Website to open in chrome
     url = 'https://mars.nasa.gov/news/'
@@ -77,7 +80,7 @@ def scrape():
     for x in hemispheres:
     
         # Append each hemisphere link to a list
-        base_url = 'https://astrogeology.usgs.gov'
+        url = 'https://astrogeology.usgs.gov'
         hemisphere_links.append(url + x.find('a')['href'])
     
     # Iterate through each hemisphere link
@@ -92,8 +95,8 @@ def scrape():
 
         # Scrape the hemisphere title and image url
         title = soup.find('h2', class_='title').text
-        img_url = base_url + soup.find('img', class_='wide-image')['src']
-                            
+        img_url = url + soup.find('img', class_='wide-image')['src']
+                                
         # Append each dictionary with the hemisphere title and image url to a list
         hemisphere_image_urls.append({'title': title, 'img_url': img_url})
     
