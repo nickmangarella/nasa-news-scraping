@@ -60,7 +60,7 @@ def scrape():
     df.rename(columns={0: '', 1: 'Mars'}, inplace=True)
 
     # Convert the DataFrame to an HTML table string
-    mars_table = df.to_html()
+    mars_table = df.to_html(classes="table table-striped")
 
     # Website to open in chrome
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
