@@ -6,7 +6,7 @@ Implementing BeautifulSoup, Pandas, splinter, and Flask modules with MongoDB to 
 ## Scraping
 First used Jupyter Notebook to scrape all the following information without error before copying to "scrape_mars.py"
 
-### Creating "scrape_mars.py"
+### "scrape_mars.py"
 * Created a function "init_browser()" with splinter to open a chrome browser for urls to be scraped
 
     def init_browser():
@@ -32,6 +32,8 @@ First used Jupyter Notebook to scrape all the following information without erro
             'mars_table': mars_table,
             'hemisphere_image_urls': hemisphere_image_urls
         }
+
+        .....
 
         # Return the results
         return mars_data
@@ -140,5 +142,46 @@ First used Jupyter Notebook to scrape all the following information without erro
             hemisphere_image_urls.append({'title': title, 'img_url': img_url})
 
 ## MongoDB and Flask App
+Created "app.py" that called the scraped data from "scrape_mars.py" and stored it in MongoDB to then display on an HTML page
+
+### "app.py"
+* Created an instance of Flask and connection to Mongo using PyMongo
+
+    app = Flask(__name__)
+    mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_app')
+
+    .....
+
+    if __name__ == '__main__':
+    app.run(debug=True)
+
+* Made a route to the HTML page to collect the data in MongoDB and render the data on the webpage
+
+    @app.route('/')
+    def home():
+
+        # Find one record of data from the mongo database
+        planet = mongo.db.collection.find_one()
+
+        # Reutrn template and data
+        return render_template('index.html', mars=planet)
+
+* Created a route to the "scrape_mars.py" file intialize the scraping of the data
+
+    @app.route('/scrape')
+    def scrape():
+
+        # Run the scrape funciton
+        mars_data = scrape_mars.scrape()
+
+        # Update the Mongo database using update and upsert=True
+        mongo.db.collection.update({}, mars_data, upsert=True)
+
+        # Redirect back to home page
+        return redirect('/')
+
+
+
+
 
 
