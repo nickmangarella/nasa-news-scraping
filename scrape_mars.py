@@ -12,6 +12,7 @@ def scrape():
 
     browser = init_browser()
 
+    # NASA Mars News
     # Website to open in chrome
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
@@ -28,7 +29,7 @@ def scrape():
         news_title = soup.find_all('div', class_='content_title')[1].text
         news_p = soup.find_all('div', class_='article_teaser_body')[0].text
 
-
+    # JPL Mars Space Images - Featured Image
     # Website to open in chrome
     url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(url)
@@ -43,6 +44,7 @@ def scrape():
 
     featured_image_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/' + image_path
 
+    # Mars Facts
     # URL to read with Pandas
     url = 'https://space-facts.com/mars/'
 
@@ -62,6 +64,7 @@ def scrape():
     # Convert the DataFrame to an HTML table string
     mars_table = df.to_html(classes="table table-striped")
 
+    # Mars Hemisphere's
     # Website to open in chrome
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
