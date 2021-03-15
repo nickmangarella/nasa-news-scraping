@@ -1,4 +1,4 @@
-# Web-Scraping-Challenge
+# NASA-News-Scraping
 
 ## Description
 Implementing BeautifulSoup, Pandas, splinter, and Flask modules with MongoDB to deploy a web application that scrapes various websites for data relatd to the NASA Mission to Mars and displays this data on an HTML page.
