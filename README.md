@@ -147,13 +147,11 @@ Created "app.py" that called the scraped data from "scrape_mars.py" and stored i
 ### "app.py"
 * Created an instance of Flask and connection to Mongo using PyMongo
 
-    app = Flask(__name__)
-    mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_app')
+        app = Flask(__name__)
+        mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_app')
 
-    .....
-
-    if __name__ == '__main__':
-    app.run(debug=True)
+        if __name__ == '__main__':
+        app.run(debug=True)
 
 * Made a route to the HTML page to connect to MongoDB and render the data on the webpage
 
@@ -168,17 +166,17 @@ Created "app.py" that called the scraped data from "scrape_mars.py" and stored i
 
 * Created a route to the "scrape_mars.py" file to intialize the scraping of the data and store in MongoDB 
 
-    @app.route('/scrape')
-    def scrape():
+        @app.route('/scrape')
+        def scrape():
 
-        # Run the scrape funciton
-        mars_data = scrape_mars.scrape()
+            # Run the scrape funciton
+            mars_data = scrape_mars.scrape()
 
-        # Update the Mongo database using update and upsert=True
-        mongo.db.collection.update({}, mars_data, upsert=True)
+            # Update the Mongo database using update and upsert=True
+            mongo.db.collection.update({}, mars_data, upsert=True)
 
-        # Redirect back to home page
-        return redirect('/')
+            # Redirect back to home page
+            return redirect('/')
 
 
 
