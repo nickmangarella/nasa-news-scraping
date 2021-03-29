@@ -155,14 +155,14 @@ Created "app.py" that called the scraped data from "scrape_mars.py" and stored i
 
 * Made a route to the HTML page to connect to MongoDB and render the data on the webpage
 
-    @app.route('/')
-    def home():
+        @app.route('/')
+        def home():
 
-        # Find one record of data from the mongo database
-        planet = mongo.db.collection.find_one()
+            # Find one record of data from the mongo database
+            planet = mongo.db.collection.find_one()
 
-        # Reutrn template and data
-        return render_template('index.html', mars=planet)
+            # Reutrn template and data
+            return render_template('index.html', mars=planet)
 
 * Created a route to the "scrape_mars.py" file to intialize the scraping of the data and store in MongoDB 
 
